@@ -75,9 +75,12 @@ let filters = document.querySelector('.filters')
 let imgCanvas = document.querySelector('#imgCanvas')
 let canvasCtx = imgCanvas.getContext("2d");
 let file = null;
+let image = null ;
 
 
-function renderFilters(name, min, max, val) {
+
+
+function renderFilters(name, min, max, value) {
   let div = document.createElement('div')
   div.classList.add('filter')
 
@@ -90,22 +93,39 @@ function renderFilters(name, min, max, val) {
   inp.type = 'range';
   inp.min = min
   inp.max = max;
-  inp.value = val;
+  inp.value = value;
+  inp.id = name ;
+
+  inp.addEventListener('input' , (e)=>{
+     allFilter[name].value = e.target.value ;
+     applyAllFilters()
+  })
 
 
   div.appendChild(p);
   div.appendChild(inp);
-
   filters.append(div)
 }
 
 
+
+
+function applyAllFilters() {
+         
+}
+
+
+
+
+// ** canvasCtx.filter = blur()
+// canvasCtx.filter = brightness()     override, not work simultaneously
+
+// it works -> .filter = blur() brightness()  
+
+
 Object.keys(allFilter).forEach((key) => {
-
   renderFilters(key, allFilter[key].min, allFilter[key].max, allFilter[key].value)
-
 })
-
 
 
 
@@ -121,13 +141,13 @@ fileInp.addEventListener('change', (e) => {
   let img = new Image();
   img.src = URL.createObjectURL(file);
 
+  image = img;
+
   img.onload = () => {
     imgCanvas.width = img.width;
     imgCanvas.height = img.height;
     canvasCtx.drawImage(img, 0, 0);
+    
   }
 
-
-
 })
-
