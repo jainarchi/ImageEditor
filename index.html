@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Editor</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main>
+        <nav>
+            <h2>Image Editor </h2>
+            <div class="nav-right">
+                <label for="image-input" class="btn">
+                    Choose File
+                    <input type="file" id="image-input" accept="image/*" hidden>
+                </label>
+
+                <button class="btn" id="reset-btn">
+                    Reset
+                </button>
+                <button class="btn" id="download-btn">
+                    Download
+                </button>
+            </div>
+
+        </nav>
+        <section>
+            <div class="left">
+                <div class="placeholder">
+                    <i class="ri-image-add-line" id="addImgIcon"></i>
+                </div>
+                <canvas id="imgCanvas"></canvas>
+
+            </div>
+
+
+            <div class="right">
+                <h2>Filter</h2>
+
+                <div class="filters">
+                </div>
+            </div>
+
+
+        </section>
+    </main>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
