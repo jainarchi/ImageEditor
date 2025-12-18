@@ -26,11 +26,11 @@ main{
 .btn{
     border: none;
     padding: var(--padding-sm) var(--padding-md);
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--border-radius-md);
     background: var(--bg-active-color);
     cursor: pointer;
     color: var(--text-active-color);   
-     font-size: var(--font-size-md);
+    font-size: var(--font-size-md);
 }
 
 #reset-btn{
@@ -75,7 +75,7 @@ main section{
 main section .left{
     width: 100% ;
     align-items: center;
-    background: gray;
+    background: var(--bg-secondary-color)
 }
 
 main section .left .placeholder{
@@ -88,18 +88,27 @@ main section .left .placeholder{
     opacity: 0.6;  
 }
 
-   
+
 main section .right{
     width: 40%;
     height: 100%;
     background-color: var(--bg-filters-color);
+    padding: var(--padding-md);
+    overflow: hidden;
+
+}
+   
+main section .right .rig-scroll-Cont{
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow-y : auto ;
+    
+    
 }
 
 .right h2{
-    padding: var(--padding-sm) var(--padding-md);
     font-weight: 600;
 }
 
@@ -107,32 +116,30 @@ main section .right{
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    padding: var(--padding-md);
     gap: var(--gutter-md);
-    overflow-y : auto ;
-    margin-block: var(--padding-sm);
-   
+    margin-block: var(--padding-lg);
 }
-.right .filters::-webkit-scrollbar {
+
+.right .filter{
+    width: 96%;
+}
+
+
+.rig-scroll-Cont::-webkit-scrollbar {
     width: 6px;
 }
 
-.right .filters::-webkit-scrollbar-track {
+.rig-scroll-Cont::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.right .filters::-webkit-scrollbar-thumb {
+.rig-scroll-Cont::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.4);
     border-radius: 10px;
 }
 
-.right .filters::-webkit-scrollbar-thumb:hover {
+.rig-scroll-Cont::-webkit-scrollbar-thumb:hover {
     background: var(--bg-active-color);
-}
-
-
-.right .filter{
-    width: 100%;
 }
 
 
@@ -141,6 +148,7 @@ main section .right{
     appearance: none;
     height: 3px;
     background-color: var(--bg-active-color);
+    cursor: pointer;
 }
 
 .right .filter input::-webkit-slider-thumb{
@@ -151,12 +159,19 @@ main section .right{
     cursor: pointer;
 }
 
+.presets{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gutter-sm);
+    margin-block: var(--padding-lg);
+}
+
+
 
 #imgCanvas {
-    height: 90%;
-    width: 90%;
+    height: 100%;
+    width: 100%;
     object-fit: contain;
-    background: red;
     display: none;
 }
 
