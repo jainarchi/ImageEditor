@@ -345,8 +345,36 @@ passAllFilters()
 
 
 
+Object.keys(allPresets).forEach((presetName) =>{
+
+  let btn = document.createElement('button')
+  btn.classList.add('btn');
+  btn.innerText = presetName;
+  presetsCont.appendChild(btn);
+
+
+  btn.addEventListener('click' , () =>{
+    Object.keys(allPresets[presetName]).forEach((key) =>{
+        allFilter[key].value = allPresets[presetName][key];
+    })
+
+    applyAllFilters()
+     
+  filtersCont.innerHTML = "";
+  passAllFilters()
+   
+  })
+   
+
+})
+
+
+
 
 function applyAllFilters() {
+  
+   if(!image ) return ;
+  
   canvasCtx.clearRect(0, 0, imgCanvas.width, imgCanvas.height);
   canvasCtx.filter = `
   brightness(${allFilter.brightness.value}${allFilter.brightness.unit})
@@ -367,35 +395,10 @@ function applyAllFilters() {
 
 
 
-Object.keys(allPresets).forEach((presetName) =>{
-
-  let btn = document.createElement('button')
-  btn.classList.add('btn');
-  btn.innerText = presetName;
-  presetsCont.appendChild(btn);
-
-
-  btn.addEventListener('click' , () =>{
-    Object.keys(allPresets[presetName]).forEach((key) =>{
-        allFilter[key].value = allPresets[presetName][key];
-    })
-
-     applyAllFilters()
-     
-  filtersCont.innerHTML = "";
-  passAllFilters()
-   
-  })
-   
-
-})
-
-
-
-
-
 
 resetButton.addEventListener("click", () => {
+  if(!image ) return ;
+  
   console.log('reset btn clicked');
   
   filtersCont.innerHTML = "";
@@ -480,19 +483,14 @@ resetButton.addEventListener("click", () => {
 
 document.getElementById('download-btn').addEventListener('click' , ()=>{
   console.log('download clicked');
+
+  if(!image ) return ;
   
    let link = document.createElement('a');
    link.download = "edited_image.png"
    link.href = imgCanvas.toDataURL();
    link.click();
 })
-
-
-
-
-
-
-
 
 
 
