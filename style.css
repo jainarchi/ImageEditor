@@ -217,6 +217,10 @@ main section .right .rig-scroll-Cont {
     main nav {
         padding-inline: var(--padding-sm);
     }
+
+    nav h2{
+        font-weight: 500;
+    }
     main nav .nav-right {
         display: none;
     }

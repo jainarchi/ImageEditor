@@ -273,6 +273,9 @@ allPresets = {
 
 
 
+let dropdownIcon = document.getElementById('dropdown')
+let dropdownBox = document.getElementById('dropdownBox')
+
 let fileInp = document.querySelector("#image-input");
 let filtersCont = document.querySelector(".filters");
 let presetsCont = document.querySelector('.presets')
@@ -291,6 +294,7 @@ fileInp.addEventListener("change", (e) => {
   document.querySelector(".placeholder").style.display = "none";
   document.querySelector("canvas").style.display = "block";
   resetButton.click();
+  dropdownBox.style.display = 'none'
 
 
   let img = new Image();
@@ -495,9 +499,6 @@ document.getElementById('download-btn').addEventListener('click' , ()=>{
 
 
 
-
-let dropdownIcon = document.getElementById('dropdown')
-let dropdownBox = document.getElementById('dropdownBox')
 
 
 dropdownIcon.addEventListener('click' , () =>{
