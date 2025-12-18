@@ -63,7 +63,7 @@ let allFilter = {
   },
 };
 
-const allPresets = {
+allPresets = {
   normal: {
     brightness: 100,
     contrast: 100,
@@ -271,19 +271,27 @@ const allPresets = {
 };
 
 
+
+
 let fileInp = document.querySelector("#image-input");
 let filtersCont = document.querySelector(".filters");
 let presetsCont = document.querySelector('.presets')
 let imgCanvas = document.querySelector("#imgCanvas");
 let canvasCtx = imgCanvas.getContext("2d");
+let resetButton = document.getElementById("reset-btn");
 let file = null;
 let image = null;
+
+
+
 
 
 fileInp.addEventListener("change", (e) => {
   file = e.target.files[0];
   document.querySelector(".placeholder").style.display = "none";
   document.querySelector("canvas").style.display = "block";
+  resetButton.click();
+
 
   let img = new Image();
   img.src = URL.createObjectURL(file);
@@ -357,6 +365,8 @@ function applyAllFilters() {
 
 
 
+
+
 Object.keys(allPresets).forEach((presetName) =>{
 
   let btn = document.createElement('button')
@@ -385,7 +395,7 @@ Object.keys(allPresets).forEach((presetName) =>{
 
 
 
-document.getElementById("reset-btn").addEventListener("click", () => {
+resetButton.addEventListener("click", () => {
   console.log('reset btn clicked');
   
   filtersCont.innerHTML = "";
@@ -479,6 +489,28 @@ document.getElementById('download-btn').addEventListener('click' , ()=>{
 
 
 
+
+
+
+
+
+
+
+
+
+let dropdownIcon = document.getElementById('dropdown')
+let dropdownBox = document.getElementById('dropdownBox')
+
+
+dropdownIcon.addEventListener('click' , () =>{
+   
+    if(dropdownBox.style.display === 'none' ){
+      dropdownBox.style.display = 'flex' ;
+    }
+    else{
+      dropdownBox.style.display = 'none' ;
+    }
+})
 
 
 

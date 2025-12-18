@@ -1,50 +1,56 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body , html{
+body,
+html {
     height: 100%;
     width: 100%;
 }
 
-html{
-   font-family: system-ui,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-   background: var(--bg-primary-color);
-   color: var(--text-primary-color);
+html {
+    font-family: system-ui, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: var(--bg-primary-color);
+    color: var(--text-primary-color);
 }
 
-main{
-    width: clamp(320px , 100vw , 1536px);
+main {
+    width: clamp(320px, 100vw, 1536px);
     height: clamp(600px, 100vh, 1200px);
     display: flex;
     flex-direction: column;
-    margin-inline: auto;  
+    margin-inline: auto;
 }
 
-.btn{
+button{
     border: none;
+}
+.btn {
     padding: var(--padding-sm) var(--padding-md);
     border-radius: var(--border-radius-md);
     background: var(--bg-active-color);
     cursor: pointer;
-    color: var(--text-active-color);   
+    color: var(--text-active-color);
     font-size: var(--font-size-md);
 }
 
-#reset-btn{
+#reset-btn {
     background-color: var(--bg-danger-color);
     color: var(--text-primary-color);
 }
-#download-btn{
+
+#download-btn {
     background-color: var(--bg-success-color);
     color: var(--text-primary-color);
 }
-i{
+
+i {
     font-size: 8vh;
     opacity: 0.6;
 }
+
 
 
 main nav {
@@ -55,41 +61,70 @@ main nav {
     height: 8vh;
     width: 100%;
     background: lightslategrey;
+    position: relative;
 
 }
-main nav .nav-right{
+
+main nav .nav-right {
     display: flex;
     gap: var(--gutter-md);
     font-size: var(--font-size-md);
-  
+
 }
-main section{
+
+#dropdown {
+    display: none;
+    font-size: var(--font-size-lg);
+}
+
+#dropdownBox{
+    position: absolute;
+    right: var(--padding-sm);
+    top: 6vh;
+    display: flex;
+    flex-direction: column;
+    opacity: 9;
+    display: none;
+
+}
+
+#dropdownBox .option{
+    padding: var(--padding-sm);
+    font-size: var(--font-size-sm2);
+    background: var(--bg-primary-color);
+}
+
+
+
+
+
+main section {
     flex-grow: 1;
     padding: var(--padding-md) var(--padding-lg);
     display: flex;
     gap: var(--gutter-lg);
     height: 92vh;
-    width: 100%;   
+    width: 100%;
 }
 
-main section .left{
-    width: 100% ;
+main section .left {
+    width: 100%;
     align-items: center;
     background: var(--bg-secondary-color)
 }
 
-main section .left .placeholder{
+main section .left .placeholder {
     height: 100%;
     width: 100%;
     background-color: var(--bg-secondary-color);
     display: flex;
     justify-content: center;
-    align-items: center;  
-    opacity: 0.6;  
+    align-items: center;
+    opacity: 0.6;
 }
 
 
-main section .right{
+main section .right {
     width: 40%;
     height: 100%;
     background-color: var(--bg-filters-color);
@@ -97,22 +132,20 @@ main section .right{
     overflow: hidden;
 
 }
-   
-main section .right .rig-scroll-Cont{
+
+main section .right .rig-scroll-Cont {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    overflow-y : auto ;
-    
-    
+    overflow-y: auto;
 }
 
-.right h2{
+.right h2 {
     font-weight: 600;
 }
 
-.right .filters{
+.right .filters {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -120,7 +153,7 @@ main section .right .rig-scroll-Cont{
     margin-block: var(--padding-lg);
 }
 
-.right .filter{
+.right .filter {
     width: 96%;
 }
 
@@ -143,7 +176,7 @@ main section .right .rig-scroll-Cont{
 }
 
 
-.right .filter input{
+.right .filter input {
     width: 100%;
     appearance: none;
     height: 3px;
@@ -151,15 +184,16 @@ main section .right .rig-scroll-Cont{
     cursor: pointer;
 }
 
-.right .filter input::-webkit-slider-thumb{
-    appearance: none;                     /* override def property */
+.right .filter input::-webkit-slider-thumb {
+    appearance: none;
+    /* override def property */
     height: 0.7rem;
     width: 0.7rem;
     background-color: rgb(255, 0, 0);
     cursor: pointer;
 }
 
-.presets{
+.presets {
     display: flex;
     flex-wrap: wrap;
     gap: var(--gutter-sm);
@@ -173,19 +207,21 @@ main section .right .rig-scroll-Cont{
     width: 100%;
     object-fit: contain;
     display: none;
+    aspect-ratio: 1/1;
 }
 
 
 
-
-
-
 @media (max-width : 530px) {
-    main nav .nav-right{
+
+    main nav {
+        padding-inline: var(--padding-sm);
+    }
+    main nav .nav-right {
         display: none;
     }
 
-    main section{
+    main section {
         flex-direction: column;
         gap: var(--gutter-sm);
         padding: var(--gutter-md);
@@ -194,8 +230,13 @@ main section .right .rig-scroll-Cont{
     main section .right {
         width: 100%;
     }
-    main section .left{
+
+    main section .left {
         aspect-ratio: 1 /1;
     }
-}
 
+
+    #dropdown {
+        display: block;
+    }
+}
