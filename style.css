@@ -79,6 +79,7 @@ main nav .nav-right {
 
 #dropdownBox{
     position: absolute;
+    z-index: 9;
     right: var(--padding-sm);
     top: 6vh;
     display: flex;
@@ -92,6 +93,7 @@ main nav .nav-right {
     padding: var(--padding-sm);
     font-size: var(--font-size-sm2);
     background: var(--bg-primary-color);
+    color: var(--text-secondary-color);
 }
 
 
@@ -121,6 +123,7 @@ main section .left .placeholder {
     justify-content: center;
     align-items: center;
     opacity: 0.6;
+   
 }
 
 
@@ -208,11 +211,16 @@ main section .right .rig-scroll-Cont {
     object-fit: contain;
     display: none;
     aspect-ratio: 1/1;
+  
 }
 
 
 
 @media (max-width : 530px) {
+    
+    #dropdown {
+        display: block;
+    }
 
     main nav {
         padding-inline: var(--padding-sm);
@@ -240,7 +248,4 @@ main section .right .rig-scroll-Cont {
     }
 
 
-    #dropdown {
-        display: block;
-    }
 }
