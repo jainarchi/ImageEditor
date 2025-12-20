@@ -272,20 +272,15 @@ allPresets = {
 
 
 
-
-let dropdownIcon = document.getElementById('dropdown')
-let dropdownBox = document.getElementById('dropdownBox')
-
 let fileInp = document.querySelector("#image-input");
 let filtersCont = document.querySelector(".filters");
 let presetsCont = document.querySelector('.presets')
 let imgCanvas = document.querySelector("#imgCanvas");
 let canvasCtx = imgCanvas.getContext("2d");
-let resetButton = document.getElementById("reset-btn");
+let resetButtons = document.querySelectorAll(".reset-btn");
+let downloadButtons = document.querySelectorAll('.download-btn')
 let file = null;
 let image = null;
-
-
 
 
 
@@ -293,8 +288,7 @@ fileInp.addEventListener("change", (e) => {
   file = e.target.files[0];
   document.querySelector(".placeholder").style.display = "none";
   document.querySelector("canvas").style.display = "block";
-  resetButton.click();
-  dropdownBox.style.display = 'none'
+  resetButtons[0].click();
 
 
   let img = new Image();
@@ -345,11 +339,13 @@ function passAllFilters() {
     );
   });
 }
-passAllFilters() 
+passAllFilters()
 
 
 
-Object.keys(allPresets).forEach((presetName) =>{
+
+
+Object.keys(allPresets).forEach((presetName) => {
 
   let btn = document.createElement('button')
   btn.classList.add('btn');
@@ -357,18 +353,18 @@ Object.keys(allPresets).forEach((presetName) =>{
   presetsCont.appendChild(btn);
 
 
-  btn.addEventListener('click' , () =>{
-    Object.keys(allPresets[presetName]).forEach((key) =>{
-        allFilter[key].value = allPresets[presetName][key];
+  btn.addEventListener('click', () => {
+    Object.keys(allPresets[presetName]).forEach((key) => {
+      allFilter[key].value = allPresets[presetName][key];
     })
 
     applyAllFilters()
-     
-  filtersCont.innerHTML = "";
-  passAllFilters()
-   
+
+    filtersCont.innerHTML = "";
+    passAllFilters()
+
   })
-   
+
 
 })
 
@@ -376,9 +372,9 @@ Object.keys(allPresets).forEach((presetName) =>{
 
 
 function applyAllFilters() {
-  
-   if(!image ) return ;
-  
+
+  if (!image) return;
+
   canvasCtx.clearRect(0, 0, imgCanvas.width, imgCanvas.height);
   canvasCtx.filter = `
   brightness(${allFilter.brightness.value}${allFilter.brightness.unit})
@@ -399,117 +395,117 @@ function applyAllFilters() {
 
 
 
+resetButtons.forEach((resetBtn) => {
 
-resetButton.addEventListener("click", () => {
-  if(!image ) return ;
-  
-  console.log('reset btn clicked');
-  
-  filtersCont.innerHTML = "";
-  allFilter = {
-    brightness: {
-      min: 0,
-      max: 200,
-      value: 100,
-      unit: "%",
-    },
+  resetBtn.addEventListener("click", () => {
+    if (!image) return;
 
-    contrast: {
-      min: 0,
-      max: 200,
-      value: 100,
-      unit: "%",
-    },
+    console.log('reset btn clicked');
 
-    saturation: {
-      min: 0,
-      max: 200,
-      value: 100,
-      unit: "%",
-    },
+    filtersCont.innerHTML = "";
+    allFilter = {
+      brightness: {
+        min: 0,
+        max: 200,
+        value: 100,
+        unit: "%",
+      },
 
-    hueRotation: {
-      min: 0,
-      max: 360,
-      value: 0,
-      unit: "deg",
-    },
+      contrast: {
+        min: 0,
+        max: 200,
+        value: 100,
+        unit: "%",
+      },
 
-    blur: {
-      min: 0,
-      max: 20,
-      value: 0,
-      unit: "px",
-    },
+      saturation: {
+        min: 0,
+        max: 200,
+        value: 100,
+        unit: "%",
+      },
 
-    grayscale: {
-      min: 0,
-      max: 100,
-      value: 0,
-      unit: "%",
-    },
+      hueRotation: {
+        min: 0,
+        max: 360,
+        value: 0,
+        unit: "deg",
+      },
 
-    sepia: {
-      min: 0,
-      max: 100,
-      value: 0,
-      unit: "%",
-    },
+      blur: {
+        min: 0,
+        max: 20,
+        value: 0,
+        unit: "px",
+      },
 
-    opacity: {
-      min: 0,
-      max: 100,
-      value: 100,
-      unit: "%",
-    },
+      grayscale: {
+        min: 0,
+        max: 100,
+        value: 0,
+        unit: "%",
+      },
 
-    invert: {
-      min: 0,
-      max: 100,
-      value: 0,
-      unit: "%",
-    },
-  };
-  passAllFilters()
+      sepia: {
+        min: 0,
+        max: 100,
+        value: 0,
+        unit: "%",
+      },
 
-  if (file) {
-  const img = new Image();
-  img.src = URL.createObjectURL(file);
-  image = img; 
+      opacity: {
+        min: 0,
+        max: 100,
+        value: 100,
+        unit: "%",
+      },
 
-   img.onload = () =>{
-     applyAllFilters();
-   }
-  }
+      invert: {
+        min: 0,
+        max: 100,
+        value: 0,
+        unit: "%",
+      },
+    };
+    passAllFilters()
 
-});
+    if (file) {
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+      image = img;
 
+      img.onload = () => {
+        applyAllFilters();
+      }
+    }
 
-document.getElementById('download-btn').addEventListener('click' , ()=>{
-  console.log('download clicked');
+  });
 
-  if(!image ) return ;
-  
-   let link = document.createElement('a');
-   link.download = "edited_image.png"
-   link.href = imgCanvas.toDataURL();
-   link.click();
 })
 
 
 
 
 
+downloadButtons.forEach((downloadBtn) => {
 
-dropdownIcon.addEventListener('click' , () =>{
-   
-    if(dropdownBox.style.display === 'none' ){
-      dropdownBox.style.display = 'flex' ;
-    }
-    else{
-      dropdownBox.style.display = 'none' ;
-    }
+  downloadBtn.addEventListener('click', () => {
+
+    if (!image) return;
+
+    let link = document.createElement('a');
+    link.download = "edited_image.png"
+    link.href = imgCanvas.toDataURL();
+    link.click();
+  })
+
+
 })
+
+
+
+
+
 
 
 

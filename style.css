@@ -36,12 +36,12 @@ button{
     font-size: var(--font-size-md);
 }
 
-#reset-btn {
+.reset-btn {
     background-color: var(--bg-danger-color);
     color: var(--text-primary-color);
 }
 
-#download-btn {
+.download-btn {
     background-color: var(--bg-success-color);
     color: var(--text-primary-color);
 }
@@ -72,32 +72,26 @@ main nav .nav-right {
 
 }
 
-#dropdown {
+nav #nav-rig-smallView{
     display: none;
-    font-size: var(--font-size-lg);
-}
-
-#dropdownBox{
-    position: absolute;
-    z-index: 9;
-    right: var(--padding-sm);
-    top: 6vh;
-    display: flex;
-    flex-direction: column;
-    opacity: 9;
-    display: none;
+    align-items: center;
+    gap: var(--gutter-md);
 
 }
 
-#dropdownBox .option{
-    padding: var(--padding-sm);
-    font-size: var(--font-size-sm2);
-    background: var(--bg-primary-color);
-    color: var(--text-secondary-color);
+nav #nav-rig-smallView i{
+   font-size: var(--font-size-lg);
+   background: transparent;
+   color: var(--bg-active-color);
+
 }
 
+nav #nav-rig-smallView label{
+   padding: 0;
+   background: transparent;
+   
 
-
+}
 
 
 main section {
@@ -122,7 +116,7 @@ main section .left .placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0.6;
+    opacity: 0.5;
    
 }
 
@@ -218,9 +212,9 @@ main section .right .rig-scroll-Cont {
 
 @media (max-width : 530px) {
     
-    #dropdown {
-        display: block;
-    }
+   nav #nav-rig-smallView{
+    display: flex;
+   }
 
     main nav {
         padding-inline: var(--padding-sm);
